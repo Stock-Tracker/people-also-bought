@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   onMouseEnterOrLeave(e) {
-    let tooltip = e.currentTarget.parentNode.querySelector('.pag-rating-container-tooltip');
+    let tooltip = e.currentTarget.parentNode.querySelector('.pab-rating-container-tooltip');
     if (Array.from(tooltip.classList).indexOf('active') === -1) {
       tooltip.classList.add('active')
     } else {
@@ -36,7 +36,7 @@ class App extends React.Component {
     return (
       <>
         <h2>People Also Bought</h2>
-        <div className="pag-row-container">{row}</div>
+        <div className="pab-row-container">{row}</div>
       </>
     );
   }
