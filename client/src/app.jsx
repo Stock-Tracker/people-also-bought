@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './card.jsx';
+import config from '../../env.config.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,10 @@ class App extends React.Component {
     } else {
       tooltip.classList.remove('active')
     }
+  }
+
+  componentDidMount() {
+    console.log('config: ', config);
   }
 
   render() {
