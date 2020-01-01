@@ -41,8 +41,9 @@ class App extends React.Component {
     this.onMouseEnterOrLeave = this.onMouseEnterOrLeave.bind(this);
   }
 
+  // TODO: flickering? might need to debounce this so it only fires every certain frequency??
   onMouseEnterOrLeave(e) {
-    let tooltip = e.currentTarget.parentNode.querySelector('.pab-rating-container-tooltip');
+    let tooltip = e.currentTarget.parentNode.parentNode.querySelector('.pab-rating-container-tooltip');
     if (Array.from(tooltip.classList).indexOf('active') === -1) {
       tooltip.classList.add('active')
     } else {
