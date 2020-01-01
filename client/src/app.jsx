@@ -8,6 +8,8 @@ class App extends React.Component {
 
     this.state = {
       ticker: 'ABCD',
+      // TODO: how to alternate this theme with the orange one?
+      theme: 'pab-theme-closed-up',
       pab: [
         {
           name: '',
@@ -78,6 +80,7 @@ class App extends React.Component {
         name={this.state.pab[i].name}
         price={this.state.pab[i].price}
         percentChange={this.state.pab[i].percentChange}
+        theme={this.state.theme}
       ></Card>
       row.push(card);
     }

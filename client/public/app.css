@@ -1,4 +1,42 @@
+/* COLORS */
+:root {
+  --green: #21ce99;
+  --green-light: #1ae9aa;
+  --orange: #f45531;
+  --orange-light: #ff6340;
+  --gray: #8c8c8e;
+
+  /* --green: rgb(33, 206, 153); */
+  /* --green-light: rgb(26, 233, 170); */
+  /* --orange: rgb(244, 85, 49); */
+  /* --orange-light: rgb(255, 99, 64); */
+}
+
+/* THEMES */
+.pab-theme-closed-up {
+  color: var(--green);
+}
+
+.pab-theme-closed-down {
+ color: var(--orange);
+}
+
 /* SERVICE */
+#pab * {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  line-height: 19px;
+}
+
+#pab h2 {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.14px;
+  line-height: 30px;
+}
+
+/* PEOPLE ALSO BOUGHT */
 #pab {
   width: 676px;
 }
@@ -9,14 +47,19 @@
 }
 
 .pab-card {
+  /* TODO: need to fix it such that each card is the same width */
   flex: 0 1 128px;
   border: 1px solid black;
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* CARD */
 .pab-price {
-  margin-top: 2rem;
+  margin: 25px 0 10px 0;
 }
 
 .pab-card:hover {
