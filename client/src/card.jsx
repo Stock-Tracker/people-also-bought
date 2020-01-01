@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Card = ({ onMouseEnterOrLeave, index }) => {
+const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange }) => {
   return (
     <div className="pab-card" data-index={index}>
-      <div className="pab-name">Microsoft</div>
+      <div className="pab-name">{name}</div>
       <div
         className="pab-rating-container"
         onMouseEnter={onMouseEnterOrLeave}
@@ -15,8 +15,8 @@ const Card = ({ onMouseEnterOrLeave, index }) => {
       <div className="pab-rating-container-tooltip">
         88% of analysts rate Microsoft as a buy.
       </div>
-      <div className="pab-price">$156.45</div>
-      <div className="pab-percent-change">+0.54%</div>
+      <div className="pab-price">{price}</div>
+      <div className="pab-percent-change">{percentChange}</div>
     </div>
   );
 }

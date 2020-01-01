@@ -7,7 +7,33 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-
+      ticker: 'ABCD',
+      pab: [
+        {
+          name: '',
+          rating: 0,
+          price: 0,
+          percentChange: 0,
+        },
+        {
+          name: '',
+          rating: 0,
+          price: 0,
+          percentChange: 0,
+        },
+        {
+          name: '',
+          rating: 0,
+          price: 0,
+          percentChange: 0,
+        },
+        {
+          name: '',
+          rating: 0,
+          price: 0,
+          percentChange: 0,
+        }
+      ]
     };
 
     this.onMouseEnterOrLeave = this.onMouseEnterOrLeave.bind(this);
@@ -22,8 +48,23 @@ class App extends React.Component {
     }
   }
 
+  // TODO: add tests
   componentDidMount() {
     console.log('config: ', config);
+    const ticker = this.state.ticker;
+
+    let pabUrl;
+    if (config.SERVICE_API_URL === null) {
+      pabUrl = `${window.location.protocol}//${window.location.hostname}`;
+    } else {
+      pabUrl = `${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}`;
+    }
+
+    fetch(`${pabUrl}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${ticker}`)
+      .then(res => res.json())
+      .then(pab => {
+        this.setState({ pab });
+      });
   }
 
   render() {
@@ -34,6 +75,9 @@ class App extends React.Component {
         key={i}
         onMouseEnterOrLeave={this.onMouseEnterOrLeave}
         index={i}
+        name={this.state.pab[i].name}
+        price={this.state.pab[i].price}
+        percentChange={this.state.pab[i].percentChange}
       ></Card>
       row.push(card);
     }
