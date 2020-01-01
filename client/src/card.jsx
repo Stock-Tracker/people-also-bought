@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme }) => {
+  // TODO: add tests
+  percentChange = percentChange > 0 ? `+${percentChange * 100}%` : `${percentChange * 100}%`;
+
   return (
     <div className="pab-card" data-index={index}>
       <div className="pab-card-top">
