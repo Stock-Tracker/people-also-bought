@@ -55,6 +55,8 @@ docker exec -i ec2-user_mongo_1 mongo "mongodb://localhost"
 ```
 
 ## Requirements
+- Requires the chart service to be up and running on the same ec2 instance
+
 ### With Docker
 - docker
 - docker-compose
@@ -68,17 +70,6 @@ docker exec -i ec2-user_mongo_1 mongo "mongodb://localhost"
 ```sh
 npm run build
 ```
-### With Docker
-OLD VERSION
-- Follow directions to install the Watchman utility https://facebook.github.io/watchman/docs/install.html
-- Install the https://pypi.org/project/pywatchman/ dependency to use watchman-make
-- `watchman-make` watches for changes in the project root directory, and runs a script that relaunches `docker-compose`
-
-```sh
-watchman-make -p '*' --run 'bash relaunch.sh'
-```
-
-- Use the flag `--build-arg NODE_ENV=development` to build an image from which to run containers that contain all development dependencies (defaults to building an image with only production dependencies)
 
 ### Without Docker
 - From within the root directory:
