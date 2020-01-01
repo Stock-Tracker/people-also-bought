@@ -8,7 +8,8 @@
     "dev": "webpack -w",
     "start-dev": "nodemon server/index.js",
     "build": "webpack -p && docker build -t bellcd/robinhood:pab . && docker push bellcd/robinhood:pab",
-    "start-docker": "node server/index.js"
+    "start-docker": "node server/index.js",
+    "seed": "node seeds/start.js"
   },
   "repository": {
     "type": "git",

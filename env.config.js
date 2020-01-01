@@ -1,5 +1,5 @@
 let obj = {
-  DATABASE_NAME: 'robinhood',
+  DATABASE_NAME: 'robinhood-pab',
   SERVICE_API_PORT: `4550`,
   DATABASE_URL: `mongodb://localhost`,
   SERVICE_API_URL: `http://localhost`,

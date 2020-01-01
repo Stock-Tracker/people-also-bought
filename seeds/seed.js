@@ -8,7 +8,7 @@ module.exports = {
     const tickerList = tickers.createTickers();
     const recursiveFn = (tickerList) => {
       if (tickerList.length === 0) {
-        console.log(`Prices seeded to database`);
+        console.log(`People Also Bought seeded to database`);
         mongoose.disconnect();
         return;
       }
@@ -16,9 +16,13 @@ module.exports = {
         const obj = {
           ticker,
           name: this.generateName(),
+          rating: 0.55, // TODO: needs to come from Roman's service
+          // TODO: get these two from my Price service
+          price: 134,
+          percentChange: 0.0005
 
         };
-        db.Ticker.create(obj, (result) => {
+        db.pabTicker.create(obj, (result) => {
             console.log(`${ticker} seeded to database`);
             recursiveFn(tickerList);
         });
