@@ -4,7 +4,8 @@
   --green-light: #1ae9aa;
   --orange: #f45531;
   --orange-light: #ff6340;
-  --gray: #8c8c8e;
+  --gray-dark: #1b1b1b;
+  --gray-light: #8c8c8e;
 
   /* --green: rgb(33, 206, 153); */
   /* --green-light: rgb(26, 233, 170); */
@@ -62,8 +63,9 @@
   margin: 25px 0 10px 0;
 }
 
+/* TODO: do with themes */
 .pab-card:hover {
-  background-color: gray;
+  background-color: gray-light;
 }
 
 .pab-rating-container-tooltip {

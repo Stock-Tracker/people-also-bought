@@ -54,7 +54,13 @@ class App extends React.Component {
   // TODO: add tests
   componentDidMount() {
     console.log('config: ', config);
-    const ticker = this.state.ticker;
+    let ticker = this.state.ticker;
+
+    // // TODO: will need to set up a route that still serves the app but can handle having the ticker in the pathname
+    // // this assumes that nothing will be in the pathname expect for the ticker
+    // ticker = window.location.pathname.slice(1) || ticker;
+    // console.log('window.location.pathname.slice(1): ', window.location.pathname.slice(2));
+    // console.log('ticker: ', ticker);
 
     let pabUrl;
     if (config.SERVICE_API_URL === null) {
