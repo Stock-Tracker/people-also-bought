@@ -32,7 +32,7 @@ export $(cat .env)
 bash deploy.sh $instance $pathToPEM 1
 ```
 
-- Enter yes at the prompt. This process may take a little while (90s or so)
+- Enter yes at the prompt.
 
 - The app is now running on the instance in a container at port 4550. The mongo database is available in its own container at port 1100.
 
