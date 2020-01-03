@@ -1,0 +1,24 @@
+# Dependencies
+node_modules
+
+# Testing
+tests
+coverage
+jest.config.js
+babel.config.js
+
+# AWS
+awscli-bundle
+
+# Source Files
+client/src
+
+# Generated Files
+package-lock.json
+
+# Guides
+STYLE-GUIDE.md
+README.md
+
+# Deployment
+.env

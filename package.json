@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack -w",
-    "start-dev": "nodemon server/index.js"
+    "dev": "webpack -w",
+    "start-dev": "nodemon server/index.js",
+    "build": "webpack -p && docker build -t bellcd/robinhood:pab . && docker push bellcd/robinhood:pab",
+    "start-docker": "node server/index.js",
+    "seed": "node seeds/start.js"
   },
   "repository": {
     "type": "git",
@@ -14,11 +17,19 @@
   },
   "author": "Christian Bell",
   "license": "MIT",
+  "engines": {
+    "node": "10.18.0"
+  },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^1.7.0",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mongoose": "^5.8.3",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
