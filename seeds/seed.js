@@ -2,8 +2,8 @@ const tickers = require('./tickers.js');
 const faker = require('faker');
 const db = require('../db/index.js');
 const mongoose = require('mongoose');
-const config = require('../env.config.js');
 const request = require('request');
+const config = require(`../env.config`);
 
 module.exports = {
   seedDatabase() {

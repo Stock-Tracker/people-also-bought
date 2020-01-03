@@ -1,6 +1,6 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const config = require('../env.config.js');
-
 console.log('config: ', config);
 
 mongoose.connect(`${config.DATABASE_URL}/${config.DATABASE_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true });

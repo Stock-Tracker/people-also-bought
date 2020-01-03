@@ -62,14 +62,7 @@ class App extends React.Component {
     // console.log('window.location.pathname.slice(1): ', window.location.pathname.slice(2));
     // console.log('ticker: ', ticker);
 
-    let pabUrl;
-    if (config.SERVICE_API_URL === null) {
-      pabUrl = `${window.location.protocol}//${window.location.hostname}`;
-    } else {
-      pabUrl = `${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}`;
-    }
-
-    fetch(`${pabUrl}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${ticker}`)
+    fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${ticker}`)
       .then(res => res.json())
       .then(pab => {
         this.setState({ pab });
