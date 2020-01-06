@@ -1,6 +1,12 @@
 import React from 'react';
 import Card from './card.jsx';
 import config from '../../env.config.js';
+import utils from './utils.js';
+
+// // for Jest test suite (ie, that runs in node.js)
+// if (!fetch) {
+//   var fetch = require('node-fetch');
+// }
 
 class App extends React.Component {
   constructor(props) {
@@ -12,28 +18,40 @@ class App extends React.Component {
       theme: 'pab-theme-closed-up',
       pab: [
         {
-          name: '',
-          rating: 0,
-          price: 0,
-          percentChange: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'Hamill - Keebler',
+          percentChange: 0.0615,
+          price: 18.13,
+          rating: 0.55,
+          ticker: "FEDC"
         },
         {
-          name: '',
-          rating: 0,
-          price: 0,
-          percentChange: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'Hamill - Keebler',
+          percentChange: 0.0615,
+          price: 18.13,
+          rating: 0.55,
+          ticker: "FEDC"
         },
         {
-          name: '',
-          rating: 0,
-          price: 0,
-          percentChange: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'Hamill - Keebler',
+          percentChange: 0.0615,
+          price: 18.13,
+          rating: 0.55,
+          ticker: "FEDC"
         },
         {
-          name: '',
-          rating: 0,
-          price: 0,
-          percentChange: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'Hamill - Keebler',
+          percentChange: 0.0615,
+          price: 18.13,
+          rating: 0.55,
+          ticker: "FEDC"
         }
       ]
     };
@@ -54,19 +72,17 @@ class App extends React.Component {
   // TODO: add tests
   componentDidMount() {
     console.log('config: ', config);
-    let ticker = this.state.ticker;
+    utils.getPab(this.state.ticker)
+      .then(pab => {
+        console.log('pab: ', pab);
+        this.setState({ pab });
+      });
 
     // // TODO: will need to set up a route that still serves the app but can handle having the ticker in the pathname
     // // this assumes that nothing will be in the pathname expect for the ticker
     // ticker = window.location.pathname.slice(1) || ticker;
     // console.log('window.location.pathname.slice(1): ', window.location.pathname.slice(2));
     // console.log('ticker: ', ticker);
-
-    fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${ticker}`)
-      .then(res => res.json())
-      .then(pab => {
-        this.setState({ pab });
-      });
   }
 
   render() {
