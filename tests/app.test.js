@@ -7,7 +7,7 @@ import Card from '../client/src/card.jsx';
 
 // import fetch, { Response } from 'node-fetch';
 
-describe('<App />', () => {
+xdescribe('<App />', () => {
   beforeEach(() => {
     fetch.resetMocks();
   });
@@ -39,13 +39,14 @@ describe('<App />', () => {
     }
   ]
 
-  it('Should render 4 <Card /> components', () => {
+  xit('Should render 4 <Card /> components', () => {
     fetch.mockResponseOnce(JSON.stringify(response));
+
     const wrapper = shallow(<App></App>);
     expect(wrapper.find(Card)).toHaveLength(4);
   });
 
-  it('Should render 4 <Card /> components', () => {
+  xit('Should render 4 <Card /> components', () => {
     const wrapper = shallow(<App></App>);
     expect(wrapper.find(Card)).toHaveLength(4);
   });
