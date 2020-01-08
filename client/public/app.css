@@ -67,6 +67,17 @@ h2.pab-price[data-theme="light"], div.pab-percent-change[data-theme="light"] { c
 /* TODO: what is the dark theming? */
 .pab-analysts-summary[data-theme="dark"] { color: white }
 
+.pab-rating-container {
+  display: flex;
+  align-items: end;
+  margin: 0.3rem 0;
+}
+
+.price-tag {
+  margin-right: 0.5rem;
+}
+
+/* TOOLTIP */
 .pab-rating-container-tooltip {
   background-color: rgba(0, 0, 0, 0.9);
   visibility: hidden;
@@ -74,8 +85,8 @@ h2.pab-price[data-theme="light"], div.pab-percent-change[data-theme="light"] { c
   position: absolute;
   max-width: 8rem;
   height: 2rem;
-  top: 9.4rem;
-  margin-left: -2rem;
+  top: 10.3rem;
+  margin-left: -2.3rem;
   border-radius: 0.3rem;
 }
 
