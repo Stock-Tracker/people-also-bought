@@ -1,7 +1,5 @@
 import utils from '../client/src/utils.js';
 
-// import fetch, { Response } from 'node-fetch';
-
 describe('utils', () => {
   beforeEach(() => {
     fetch.resetMocks();
@@ -51,14 +49,13 @@ describe('utils', () => {
 
     utils.getPab('ABCD')
       .then(res => {
-        console.log('res.data: ', res.data);
         expect(res.data).toHaveLength(4);
       });
 
     expect(fetch.mock.calls.length).toEqual(1);
   });
 
-  xit('Should throw an error if ticker is not a string ', () => {
-    fetch.mockResponseOnce(JSON.stringify(response));
+  it('Should throw an error if ticker is not a string ', async () => {
+    await expect(utils.getPab(14)).rejects.toThrow();
   });
 });

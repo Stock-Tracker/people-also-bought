@@ -4,7 +4,7 @@
   "description": "People Also Bought service for this clone of the Robinhood stock detail page",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "dev": "webpack -w",
     "start-dev": "nodemon server/index.js",
     "build": "webpack -p && docker build -t bellcd/robinhood:pab . && docker push bellcd/robinhood:pab",

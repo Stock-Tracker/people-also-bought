@@ -8,6 +8,7 @@ module.exports = {
    * @returns {PROMISE} pab - A promise which resolves with an array of objects, with the shape of sampledata/pab.js
    */
   async getPab(ticker) {
+    if (typeof ticker !== 'string') throw new Error()
     try {
       pab = await fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${ticker}`);
       pab = await pab.json();
