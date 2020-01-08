@@ -3,11 +3,6 @@ import Card from './card.jsx';
 import config from '../../env.config.js';
 import utils from './utils.js';
 
-// // for Jest test suite (ie, that runs in node.js)
-// if (!fetch) {
-//   var fetch = require('node-fetch');
-// }
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +11,7 @@ class App extends React.Component {
       ticker: 'ABCD',
       // TODO: how to alternate this theme with the orange one?
       theme: 'pab-theme-closed-up',
+      isLoading: true,
       pab: [
         {
           __v: 0,
@@ -75,8 +71,11 @@ class App extends React.Component {
     utils.getPab(this.state.ticker)
       .then(pab => {
         console.log('pab: ', pab);
-        this.setState({ pab });
-      });
+        this.setState({ pab, isLoading: false });
+      })
+      .catch(error => {
+        console.log(error);
+      })
 
     // // TODO: will need to set up a route that still serves the app but can handle having the ticker in the pathname
     // // this assumes that nothing will be in the pathname expect for the ticker
@@ -86,27 +85,31 @@ class App extends React.Component {
   }
 
   render() {
-    let row = [];
-    let card;
-    for (let i = 0; i < 4; i++) {
-      card = <Card
-        key={i}
-        onMouseEnterOrLeave={this.onMouseEnterOrLeave}
-        index={i}
-        name={this.state.pab[i].name}
-        price={this.state.pab[i].price}
-        percentChange={this.state.pab[i].percentChange}
-        theme={this.state.theme}
-      ></Card>
-      row.push(card);
-    }
+    if (this.state.isLoading) {
+      return <h2 className="pab-loading">Loading...</h2>
+    } else {
+      let row = this.state.pab.map((pab, i) => {
+        return (
+          <Card
+            key={i}
+            onMouseEnterOrLeave={this.onMouseEnterOrLeave}
+            index={i}
+            name={pab.name}
+            price={pab.price}
+            percentChange={pab.percentChange}
+            theme={this.state.theme}
+          >
+          </Card>
+        );
+      });
 
-    return (
-      <>
-        <h2>People Also Bought</h2>
-        <div className="pab-row-container">{row}</div>
-      </>
-    );
+      return (
+        <>
+          <h2>People Also Bought</h2>
+          <div className="pab-row-container">{row}</div>
+        </>
+      );
+    }
   }
 }
 
