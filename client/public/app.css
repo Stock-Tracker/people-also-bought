@@ -5,7 +5,8 @@
   --orange: #f45531;
   --orange-light: #ff6340;
   --gray-dark: #1b1b1b;
-  --gray-light: #8c8c8e;
+  /* --gray-light: #8c8c8e; */
+  --gray-light: #fafafa;
 
   /* --green: rgb(33, 206, 153); */
   /* --green-light: rgb(26, 233, 170); */
@@ -50,7 +51,7 @@
 .pab-card {
   /* TODO: need to fix it such that each card is the same width */
   flex: 0 1 128px;
-  border: 1px solid black;
+  border: 1px solid var(--gray-light);
   padding: 1rem;
 
   display: flex;
@@ -65,16 +66,19 @@
 
 /* TODO: do with themes */
 .pab-card:hover {
-  background-color: gray-light;
+  background-color: var(--gray-light);
 }
 
 .pab-rating-container-tooltip {
-  background-color: #FFC107;
+  background-color: rgba(0, 0, 0, 0.7);
   visibility: hidden;
-  padding: 1rem;
+  padding: 0.7rem 2.3rem;
   position: absolute;
-  width: 160px;
-  height: 40px;
+  max-width: 8rem;
+  height: 2rem;
+  top: 9.4rem;
+  margin-left: -2rem;
+  border-radius: 0.3rem;
 }
 
 .active {
