@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from './card.jsx';
 import config from '../../env.config.js';
-import utils from './utils.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -68,7 +67,9 @@ class App extends React.Component {
   // TODO: add tests
   componentDidMount() {
     console.log('config: ', config);
-    utils.getPab(this.state.ticker)
+
+    fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${this.state.ticker}`)
+      .then(pab => pab.json())
       .then(pab => {
         console.log('pab: ', pab);
         this.setState({ pab, isLoading: false });

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../client/src/app.jsx';
 import Card from '../client/src/card.jsx';
-import utils from '../client/src/utils.js';
+import config from '../env.config.js';
 
 const response = [
   {
@@ -43,8 +43,8 @@ const response = [
   }
 ]
 
-jest.mock('../client/src/utils.js');
-utils.getPab.mockResolvedValue(response);
+// jest.mock('../client/src/utils.js');
+// utils.getPab.mockResolvedValue(response);
 
 describe('<App />', () => {
   beforeEach(() => {
@@ -57,12 +57,25 @@ describe('<App />', () => {
   // set state
   // expect 4 <Card />s to be rendered
 
+  it('Should return an array of 4 objects', () => {
+    fetch.mockResponseOnce(JSON.stringify(response));
 
-  it('Should render 4 <Card /> components', () => {
+    fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/ABCD`)
+      .then(res => res.json())
+      .then(res => {
+        expect(res).toHaveLength(4);
+      })
+
+    expect(fetch.mock.calls.length).toEqual(1);
+  });
+
+  xit('Should render 4 <Card /> components', async () => {
     // fetch.mockResponseOnce(JSON.stringify(response));
-
-    // const wrapper = shallow(<App></App>, { disableLifecycleMethods: true });
-    const wrapper = shallow(<App></App>);
+    const wrapper = shallow(<App></App>, { disableLifecycleMethods: true });
+    // const wrapper = shallow(<App></App>)
+    // wrapper.instance().setState();
+    console.log(wrapper.html());
+    console.log(wrapper.debug())
     expect(wrapper.find(Card)).toHaveLength(4);
   });
 
