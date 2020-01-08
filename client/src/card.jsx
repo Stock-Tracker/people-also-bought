@@ -4,7 +4,7 @@ const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme })
   percentChange = percentChange > 0 ? `+${percentChange * 100}%` : `${percentChange * 100}%`;
 
   return (
-    <div className="pab-card" data-index={index}>
+    <div className="pab-card" data-theme={theme} data-index={index}>
       <div className="pab-card-top">
         <div className="pab-name">{name}</div>
         <div
@@ -18,12 +18,12 @@ const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme })
       </div>
 
       <div className="pab-rating-container-tooltip">
-        88% of analysts rate Microsoft as a buy.
+        <span className="pab-analysts-summary" data-theme={theme}>88% of analysts rate Microsoft as a buy.</span>
       </div>
 
       <div className="pab-card-bottom">
-        <h2 className={`pab-price ${theme}`}>${price}</h2>
-        <div className={`pab-percent-change ${theme}`}>{percentChange}</div>
+        <h2 className="pab-price" data-theme={theme}>${price}</h2>
+        <div className="pab-percent-change" data-theme={theme}>{percentChange}</div>
       </div>
     </div>
   );

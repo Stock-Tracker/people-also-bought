@@ -14,15 +14,6 @@
   /* --orange-light: rgb(255, 99, 64); */
 }
 
-/* THEMES */
-.pab-theme-closed-up {
-  color: var(--green);
-}
-
-.pab-theme-closed-down {
- color: var(--orange);
-}
-
 /* SERVICE */
 #pab * {
   font-size: 13px;
@@ -51,26 +42,33 @@
 .pab-card {
   /* TODO: need to fix it such that each card is the same width */
   flex: 0 1 128px;
-  border: 1px solid var(--gray-light);
   padding: 1rem;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* CARD */
+/* EACH CARD */
 .pab-price {
   margin: 25px 0 10px 0;
 }
 
-/* TODO: do with themes */
-.pab-card:hover {
-  background-color: var(--gray-light);
-}
+h2.pab-price[data-theme="light"], div.pab-percent-change[data-theme="light"] { color: var(--green); }
+
+.pab-card[data-theme="light"]:hover { background-color: var(--gray-light); }
+/* TODO: what is the dark theming? */
+.pab-card[data-theme="dark"]:hover { background-color: var(--gray-light); }
+
+.pab-card[data-theme="light"] { border: 1px solid var(--gray-light); }
+/* TODO: what is the dark theming? */
+.pab-card[data-theme="dark"] { border: 1px solid var(--gray-light); }
+
+.pab-analysts-summary[data-theme="light"] { color: white }
+/* TODO: what is the dark theming? */
+.pab-analysts-summary[data-theme="dark"] { color: white }
 
 .pab-rating-container-tooltip {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   visibility: hidden;
   padding: 0.7rem 2.3rem;
   position: absolute;

@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       ticker: 'ABCD',
       // TODO: how to alternate this theme with the orange one?
-      theme: 'pab-theme-closed-up',
+      theme: 'light',
       isLoading: true,
       pab: [
         {
