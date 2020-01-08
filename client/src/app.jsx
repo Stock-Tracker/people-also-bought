@@ -64,14 +64,12 @@ class App extends React.Component {
     }
   }
 
-  // TODO: add tests
   componentDidMount() {
     console.log('config: ', config);
 
     fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${this.state.ticker}`)
       .then(pab => pab.json())
       .then(pab => {
-        console.log('pab: ', pab);
         this.setState({ pab, isLoading: false });
       })
       .catch(error => {
