@@ -25,7 +25,9 @@ const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme })
       </div>
 
       <div className="pab-rating-container-tooltip">
-        <span className="pab-analysts-summary" data-theme={theme}>88% of analysts rate Microsoft as a buy.</span>
+        <span className="pab-analysts-summary" data-theme={theme}>
+          88% of analysts rate <span className="pab-summary-name">{name}</span> as a buy.
+        </span>
       </div>
 
       <div className="pab-card-bottom">
