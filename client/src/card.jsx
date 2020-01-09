@@ -1,7 +1,10 @@
 import React from 'react';
 
 const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme }) => {
-  percentChange = percentChange > 0 ? `+${percentChange * 100}%` : `${percentChange * 100}%`;
+  let formattedPercentChange = `${(percentChange * 100).toFixed(2)}%`;
+  if (percentChange > 0) {
+    formattedPercentChange = '+' + formattedPercentChange;
+  }
 
   // TODO: review how this works ...
   const priceTag = <svg width="20" height="20" viewBox="0 0 20 20">
@@ -32,7 +35,7 @@ const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme })
 
       <div className="pab-card-bottom">
         <h2 className="pab-price" data-theme={theme}>${price}</h2>
-        <div className="pab-percent-change" data-theme={theme}>{percentChange}</div>
+        <div className="pab-percent-change" data-theme={theme}>{formattedPercentChange}</div>
       </div>
     </div>
   );
