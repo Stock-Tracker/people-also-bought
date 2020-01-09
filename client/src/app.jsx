@@ -68,7 +68,9 @@ class App extends React.Component {
     console.log('config: ', config);
 
     fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${this.state.ticker}`)
-      .then(pab => pab.json())
+      .then(pab => {
+        return pab.json()
+      })
       .then(pab => {
         this.setState({ pab, isLoading: false });
       })
