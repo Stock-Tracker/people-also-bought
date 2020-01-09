@@ -19,6 +19,7 @@
   - [Earnings Chart](https://github.com/Dr-Wing/earnings)
 
 ## Deployment
+- This microservice requires the [Price Chart](https://github.com/Dr-Wing/chart) microservice to be running. Please deploy that microservice first, if you have not already.
 - Create a file in the project directory named `.env`, based on `.env.template`. This file will need:
   1. The URL of the deployed EC2 instance for this service
   2. The URL of the deployed EC2 instance for the price chart service
