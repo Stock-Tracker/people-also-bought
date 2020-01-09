@@ -15,39 +15,39 @@ class App extends React.Component {
         {
           __v: 0,
           _id: '5e0d1bc4ebc3c52930ce3707',
-          name: 'Hamill - Keebler',
-          percentChange: 0.0615,
-          price: 18.13,
-          rating: 0.55,
-          ticker: "FEDC"
+          name: 'sample',
+          percentChange: 0,
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
         },
         {
           __v: 0,
           _id: '5e0d1bc4ebc3c52930ce3707',
-          name: 'Hamill - Keebler',
-          percentChange: 0.0615,
-          price: 18.13,
-          rating: 0.55,
-          ticker: "FEDC"
+          name: 'sample',
+          percentChange: 0,
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
         },
         {
           __v: 0,
           _id: '5e0d1bc4ebc3c52930ce3707',
-          name: 'Hamill - Keebler',
-          percentChange: 0.0615,
-          price: 18.13,
-          rating: 0.55,
-          ticker: "FEDC"
+          name: 'sample',
+          percentChange: 0,
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
         },
         {
           __v: 0,
           _id: '5e0d1bc4ebc3c52930ce3707',
-          name: 'Hamill - Keebler',
-          percentChange: 0.0615,
-          price: 18.13,
-          rating: 0.55,
-          ticker: "FEDC"
-        }
+          name: 'sample',
+          percentChange: 0,
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
+        },
       ]
     };
 
@@ -65,14 +65,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('config: ', config);
+    // console.log('config: ', config);
 
     fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${this.state.ticker}`)
       .then(pab => {
         return pab.json()
       })
       .then(pab => {
-        this.setState({ pab, isLoading: false });
+        this.setState({ pab, isLoading: false, test: true });
       })
       .catch(error => {
         console.log(error);
