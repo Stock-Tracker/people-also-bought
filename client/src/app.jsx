@@ -65,14 +65,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('config: ', config);
+    console.log('config: ', config);
 
     fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${this.state.ticker}`)
-      .then(pab => {
-        return pab.json()
-      })
-      .then(pab => {
-        this.setState({ pab, isLoading: false, test: true });
+    .then(pab => {
+      return pab.json()
+    })
+    .then(pab => {
+      this.setState({ pab, isLoading: false, test: true });
       })
       .catch(error => {
         console.log(error);

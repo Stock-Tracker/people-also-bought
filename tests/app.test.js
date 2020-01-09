@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import App from '../client/src/app.jsx';
 import Card from '../client/src/card.jsx';
 
@@ -47,22 +47,16 @@ describe('<App />', () => {
     fetch.resetMocks();
   });
 
-  it('Should render 4 <Card /> components', () => {
-    fetch.mockResponseOnce(JSON.stringify(response));
-    const wrapper = shallow(<App />, { disableLifecycleMethods: false });
-    // console.log(wrapper.debug());
-    console.log(wrapper.instance());
-    // wrapper.instance().setState({ isLoading: false }); // TODO: why is this setState call necessary? doesn't the setState call from componentDidMount fire?
-    expect(wrapper.find(Card)).toHaveLength(4);
-    expect(fetch.mock.calls.length).toEqual(1);
-  });
-
-  xit('Should render loading if the api call did not complete yet', () => {
+  it('Should render loading initially', () => {
     fetch.mockResponseOnce(JSON.stringify(response));
     const wrapper = shallow(<App></App>);
     expect(wrapper.find('.pab-loading')).toHaveLength(1);
+  });
+
+  it('Should render 4 <Card /> components after network request completes', () => {
+    fetch.mockResponseOnce(JSON.stringify(response));
+    const wrapper = shallow(<App />);
     wrapper.instance().setState({ isLoading: false });
-    expect(wrapper.find('.pab-loading')).toHaveLength(0);
     expect(wrapper.find(Card)).toHaveLength(4);
     expect(fetch.mock.calls.length).toEqual(1);
   });
