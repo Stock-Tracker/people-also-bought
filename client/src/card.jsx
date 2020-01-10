@@ -6,6 +6,20 @@ const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme })
     formattedPercentChange = '+' + formattedPercentChange;
   }
 
+  // TODO: this should come from the other microservice when it's ready ...
+  const random = Math.random();
+  let rating;
+  if (random <= 0.3) {
+    rating = 'Buy';
+  } else if (random <= 0.6) {
+    rating = 'Hold';
+  } else {
+    rating = 'Sell';
+  }
+
+  // random number between 50 and 100
+  const ratingPercent = parseInt(((Math.random() * 50) + 50).toFixed());
+
   // TODO: review how this works ...
   const priceTag = <svg width="20" height="20" viewBox="0 0 20 20">
     <g fillRule="evenodd" transform="translate(-4 -4)">
@@ -23,13 +37,13 @@ const Card = ({ onMouseEnterOrLeave, index, name, price, percentChange, theme })
           onMouseLeave={onMouseEnterOrLeave}
         >
           <span className="price-tag">{priceTag}</span>
-          <span className="pab-rating">88% Buy</span>
+          <span className="pab-rating">{ratingPercent}% {rating}</span>
         </div>
       </div>
 
       <div className="pab-rating-container-tooltip">
         <span className="pab-analysts-summary" data-theme={theme}>
-          88% of analysts rate <span className="pab-summary-name">{name}</span> as a buy.
+        {ratingPercent}% of analysts rate <span className="pab-summary-name">{name}</span> as a {rating}.
         </span>
       </div>
 
