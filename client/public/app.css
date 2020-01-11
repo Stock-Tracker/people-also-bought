@@ -95,7 +95,7 @@ h2.pab-price[data-theme="light"], div.pab-percent-change[data-theme="light"] { c
   border-radius: 0.3rem;
 }
 
-.active {
+.pab-active {
   visibility: visible;
   transition: all 1s;
 }
