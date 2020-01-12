@@ -8,89 +8,102 @@ class App extends React.Component {
 
     this.state = {
       ticker: 'ABCD',
-      // TODO: how to alternate this theme with the orange one?
-      theme: 'pab-theme-closed-up',
+      // TODO: how to alternate this theme
+      theme: 'light',
+      isLoading: true,
       pab: [
         {
-          name: '',
-          rating: 0,
-          price: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'sample',
           percentChange: 0,
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
         },
         {
-          name: '',
-          rating: 0,
-          price: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'sample',
           percentChange: 0,
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
         },
         {
-          name: '',
-          rating: 0,
-          price: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'sample',
           percentChange: 0,
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
         },
         {
-          name: '',
-          rating: 0,
-          price: 0,
+          __v: 0,
+          _id: '5e0d1bc4ebc3c52930ce3707',
+          name: 'sample',
           percentChange: 0,
-        }
+          price: 0,
+          rating: 0,
+          ticker: "AAAA"
+        },
       ]
     };
 
     this.onMouseEnterOrLeave = this.onMouseEnterOrLeave.bind(this);
   }
 
-  // TODO: flickering? might need to debounce this so it only fires every certain frequency??
   onMouseEnterOrLeave(e) {
     let tooltip = e.currentTarget.parentNode.parentNode.querySelector('.pab-rating-container-tooltip');
-    if (Array.from(tooltip.classList).indexOf('active') === -1) {
-      tooltip.classList.add('active')
+    if (Array.from(tooltip.classList).indexOf('pab-active') === -1) {
+      tooltip.classList.add('pab-active')
     } else {
-      tooltip.classList.remove('active')
+      tooltip.classList.remove('pab-active')
     }
   }
 
-  // TODO: add tests
   componentDidMount() {
     console.log('config: ', config);
-    let ticker = this.state.ticker;
 
-    // // TODO: will need to set up a route that still serves the app but can handle having the ticker in the pathname
-    // // this assumes that nothing will be in the pathname expect for the ticker
-    // ticker = window.location.pathname.slice(1) || ticker;
-    // console.log('window.location.pathname.slice(1): ', window.location.pathname.slice(2));
-    // console.log('ticker: ', ticker);
-
-    fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${ticker}`)
-      .then(res => res.json())
-      .then(pab => {
-        this.setState({ pab });
-      });
+    fetch(`${config.SERVICE_PEOPLE_ALSO_BOUGHT_URL}:${config.SERVICE_PEOPLE_ALSO_BOUGHT_PORT}/people-also-bought/${this.state.ticker}`)
+    .then(pab => {
+      return pab.json()
+    })
+    .then(pab => {
+      this.setState({ pab, isLoading: false, test: true });
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   render() {
-    let row = [];
-    let card;
-    for (let i = 0; i < 4; i++) {
-      card = <Card
-        key={i}
-        onMouseEnterOrLeave={this.onMouseEnterOrLeave}
-        index={i}
-        name={this.state.pab[i].name}
-        price={this.state.pab[i].price}
-        percentChange={this.state.pab[i].percentChange}
-        theme={this.state.theme}
-      ></Card>
-      row.push(card);
-    }
+    if (this.state.isLoading) {
+      return <h2 className="pab-loading">Loading...</h2>
+    } else {
+      let row = this.state.pab.map((pab, i) => {
+        return (
+          <Card
+            key={i}
+            onMouseEnterOrLeave={this.onMouseEnterOrLeave}
+            index={i}
+            name={pab.name}
+            price={pab.price}
+            percentChange={pab.percentChange}
+            theme={this.state.theme}
+          >
+          </Card>
+        );
+      });
 
-    return (
-      <>
-        <h2>People Also Bought</h2>
-        <div className="pab-row-container">{row}</div>
-      </>
-    );
+      return (
+        <>
+          <h2>People Also Bought</h2>
+          <div className="pab-row-container">{row}</div>
+        </>
+      );
+    }
   }
 }
 
