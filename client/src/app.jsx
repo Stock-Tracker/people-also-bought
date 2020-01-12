@@ -8,7 +8,7 @@ class App extends React.Component {
 
     this.state = {
       ticker: 'ABCD',
-      // TODO: how to alternate this theme with the orange one?
+      // TODO: how to alternate this theme
       theme: 'light',
       isLoading: true,
       pab: [
@@ -54,7 +54,6 @@ class App extends React.Component {
     this.onMouseEnterOrLeave = this.onMouseEnterOrLeave.bind(this);
   }
 
-  // TODO: flickering? might need to debounce this so it only fires every certain frequency??
   onMouseEnterOrLeave(e) {
     let tooltip = e.currentTarget.parentNode.parentNode.querySelector('.pab-rating-container-tooltip');
     if (Array.from(tooltip.classList).indexOf('pab-active') === -1) {
@@ -77,12 +76,6 @@ class App extends React.Component {
       .catch(error => {
         console.log(error);
       })
-
-    // // TODO: will need to set up a route that still serves the app but can handle having the ticker in the pathname
-    // // this assumes that nothing will be in the pathname expect for the ticker
-    // ticker = window.location.pathname.slice(1) || ticker;
-    // console.log('window.location.pathname.slice(1): ', window.location.pathname.slice(2));
-    // console.log('ticker: ', ticker);
   }
 
   render() {
